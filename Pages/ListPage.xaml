@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1" Name="Корзина" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Количество выбранных книг: "/>
-                <TextBlock x:Name="tbBookCount" Text="{Binding Path=MainWindow.BookManagingClass.Cart.Count}"/>
+                <TextBlock x:Name="tbBookCount" Text="0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Стоимость покупки: "/>
@@ -66,9 +66,11 @@
                                 <TextBlock x:Name="tbSDescription" TextWrapping="Wrap" Text="{Binding Path=Book.Description}" MaxWidth="800"/>
                             </StackPanel>
                         </StackPanel>
+                        <Button Content="Добавить в корзину" Width="200" Height="50" Click="Button_Click" Uid="{Binding Path=Book.id}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Content="Корзина" Width="100" HorizontalAlignment="Right" Height="50" VerticalAlignment="Center" Click="Button_Click_1"/>
     </Grid>
 </Page>

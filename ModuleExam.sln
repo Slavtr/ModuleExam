@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleExam", "ModuleExam.csproj", "{D95E1F2B-EC70-440B-BD89-A9A3843499B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountDll", "DiscountDll\DiscountDll.csproj", "{DC8E4546-D4F7-4F94-BDD9-A78100227525}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D95E1F2B-EC70-440B-BD89-A9A3843499B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D95E1F2B-EC70-440B-BD89-A9A3843499B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D95E1F2B-EC70-440B-BD89-A9A3843499B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

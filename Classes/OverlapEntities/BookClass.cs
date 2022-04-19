@@ -33,5 +33,6 @@ namespace ModuleExam.Classes.OverlapEntities
         {
             Book = book;
         }
+        public int Count { get; set; }
     }
 }

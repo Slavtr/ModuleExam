@@ -24,12 +24,19 @@ namespace ModuleExam
     {
         public static List<Page> Pages { get; set; } = new List<Page>();
         public static BookManagingClass BookManagingClass { get; set; }
+        private static Frame MainFrame;
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame = mwMainFrame;
             BookManagingClass = new BookManagingClass();
             Pages.Add(new Pages.ListPage());
             mwMainFrame.Content = Pages[0];
+            Pages.Add(new Pages.Cart());
+        }
+        public static void ChangePage(int number)
+        {
+            MainFrame.Content = Pages[number];
         }
     }
 }

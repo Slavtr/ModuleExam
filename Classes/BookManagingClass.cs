@@ -27,6 +27,38 @@ namespace ModuleExam.Classes
                 Books.Add(new BookClass(book));
             }
         }
-        
+        public string CalculateCost()
+        {
+            decimal ret = 0;
+            foreach(BookClass b in _cart)
+            {
+                ret += (decimal)b.Book.Price;
+            }
+            return Math.Round(ret, 2).ToString();
+        }
+        public string CalculateDiscount()
+        {
+            List<double> discount = new List<double>();
+            foreach(BookClass b in _cart)
+            {
+                discount.Add(Convert.ToDouble(b.Book.Price));
+            }
+            return DiscountDll.DiscountCount.CalculateDiscount(discount, CalculateCost());
+        }
+        public int Buy()
+        {
+            int ret = _dataModel.Exam_BookSale.Last().SaleCode + 1;
+
+            foreach(BookClass book in _cart)
+            {
+                if(book.Count > book.Book.CountInShop + book.Book.CountInStore)
+                {
+                    MessageBox.Show("Невозможно предоставить требуемое количество книг " + book.Book.Name);
+                    return -1;
+                }
+            }
+
+            return ret;
+        }
     }
 }
