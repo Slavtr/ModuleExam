@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="True">
+            <Image Name="Logo" Grid.Row="0"/>
+            <TextBlock Name="ShopName" Text="Магазин книг" FontFamily="Arial Black" FontSize="22" FontWeight="Bold" FontStyle="Normal" TextAlignment="Center"/>
+        </DockPanel>
+        <Frame x:Name="mwMainFrame" Grid.Row="1"/>
     </Grid>
 </Window>
