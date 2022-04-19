@@ -48,6 +48,8 @@ namespace ModuleExam.Classes
         public int Buy()
         {
             int ret = _dataModel.Exam_BookSale.Last().SaleCode + 1;
+            int time = 0;
+            int count = 0;
 
             foreach(BookClass book in _cart)
             {
@@ -57,6 +59,23 @@ namespace ModuleExam.Classes
                     return -1;
                 }
             }
+
+            foreach(BookClass book in _cart)
+            {
+                count += book.Count;
+                _dataModel.Exam_Books.First(x => x.id == book.Book.id).CountInShop -= book.Count;
+                if(_dataModel.Exam_Books.First(x => x.id == book.Book.id).CountInShop < 0)
+                {
+                    _dataModel.Exam_Books.First(x => x.id == book.Book.id).CountInStore += _dataModel.Exam_Books.First(x => x.id == book.Book.id).CountInShop;
+                    _dataModel.Exam_Books.First(x => x.id == book.Book.id).CountInShop = 0;
+                    time = 72;
+                }
+            }
+
+            double price = Convert.ToDouble(CalculateCost()) / 100 * (100 - Convert.ToDouble(CalculateDiscount()));
+
+            string str = "Ваш заказ под номером " + ret.ToString() + " будет доступен через " + time.ToString() + " часа.\n Итоговое количество равно " + count + " единиц.\n Доступно резервирование на 1 неделю с текущей даты.";
+            MessageBox.Show(str);
 
             return ret;
         }

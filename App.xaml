@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:ModuleExam"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Arial Black"/>
+            </Style.Setters>
+        </Style>
     </Application.Resources>
 </Application>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleExam", "ModuleExam.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountDll", "DiscountDll\DiscountDll.csproj", "{DC8E4546-D4F7-4F94-BDD9-A78100227525}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{213A9BAA-3621-4E30-BCCA-F5D514424D16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8E4546-D4F7-4F94-BDD9-A78100227525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{213A9BAA-3621-4E30-BCCA-F5D514424D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213A9BAA-3621-4E30-BCCA-F5D514424D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213A9BAA-3621-4E30-BCCA-F5D514424D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213A9BAA-3621-4E30-BCCA-F5D514424D16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
