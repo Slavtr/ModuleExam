@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UnitTestProject1\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="UnitTestProject1\Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTestProject1\UnitTest1.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,6 +98,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Classes\OverlapEntities\BookClass.cs" />
+    <Compile Include="DiscountDll\Class1.cs" />
+    <Compile Include="DiscountDll\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="DiscountDll\Properties\AssemblyInfo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -139,19 +145,37 @@
     <None Include="Classes\DataModel\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
+    <None Include="DiscountDll\DiscountDll.csproj" />
+    <None Include="DiscountDll\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="DiscountDll\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="DiscountDll\obj\Debug\DiscountDll.csproj.AssemblyReference.cache" />
+    <None Include="DiscountDll\obj\Debug\DiscountDll.csproj.CoreCompileInputs.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Documents\Тестовый документ.docx" />
+    <None Include="UnitTestProject1\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="UnitTestProject1\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="UnitTestProject1\obj\Debug\UnitTestProject1.csproj.AssemblyReference.cache" />
+    <None Include="UnitTestProject1\packages.config" />
+    <None Include="UnitTestProject1\UnitTestProject1.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Documents\" />
+    <Folder Include="DiscountDll\obj\Debug\TempPE\" />
+    <Folder Include="UnitTestProject1\bin\Debug\" />
+    <Folder Include="UnitTestProject1\obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DiscountDll\bin\Debug\DiscountDll.dll" />
+    <Content Include="DiscountDll\bin\Debug\DiscountDll.pdb" />
+    <Resource Include="DiscountDll\obj\Debug\DiscountDll.csproj.FileListAbsolute.txt" />
+    <Content Include="DiscountDll\obj\Debug\DiscountDll.dll" />
+    <Content Include="DiscountDll\obj\Debug\DiscountDll.pdb" />
     <EmbeddedResource Include="Covers\Долгая прогулка.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
