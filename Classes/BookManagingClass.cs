@@ -47,7 +47,16 @@ namespace ModuleExam.Classes
         }
         public int Buy()
         {
-            int ret = _dataModel.Exam_BookSale.Last().SaleCode + 1;
+            List<Exam_BookSale> ls = _dataModel.Exam_BookSale.ToList();
+            int ret = 0;
+            if (ls.Count > 0)
+            {
+                ret = ls.Last().SaleCode + 1;
+            }
+            else
+            {
+                ret = 1;
+            }
             int time = 0;
             int count = 0;
 
@@ -76,6 +85,34 @@ namespace ModuleExam.Classes
 
             string str = "Ваш заказ под номером " + ret.ToString() + " будет доступен через " + time.ToString() + " часа.\n Итоговое количество равно " + count + " единиц.\n Доступно резервирование на 1 неделю с текущей даты.";
             MessageBox.Show(str);
+
+
+            Exam_BookSale sale = new Exam_BookSale();
+
+            foreach (BookClass book in _cart)
+            {
+                if (sale.id == 0)
+                {
+                    if (ls.Count > 0)
+                    {
+                        sale.id = ls.Last().id + 1;
+                    }
+                    else
+                    {
+                        sale.id = 1;
+                    }
+                }
+                else
+                {
+                    sale.id++;
+                }
+                sale.SendDate = DateTime.Now;
+                sale.SaleCode = ret;
+                sale.BookId = book.Book.id;
+                _dataModel.Exam_BookSale.Add(sale);
+            }
+
+            _dataModel.SaveChanges();
 
             return ret;
         }
