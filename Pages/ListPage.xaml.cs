@@ -23,7 +23,7 @@ namespace ModuleExam.Pages
         public ListPage()
         {
             InitializeComponent();
-
+            lbMainListBox.ItemsSource = MainWindow.BookManagingClass.Books;
         }
     }
 }

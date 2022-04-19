@@ -4,9 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище BookShopDataModel_Namespace" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "41P_Palamarchuk.dbo.Exam_Books" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+    <Schema Namespace="Хранилище BookShopDataModel_Namespace" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Exam_Books">
           <Key>
             <PropertyRef Name="id" />
@@ -21,23 +19,36 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Cover" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Exam_BookSale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="SaleCode" Type="int" Nullable="false" />
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="SendDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Exam_BookSale_Exam_Books">
+          <End Role="Exam_Books" Type="Self.Exam_Books" Multiplicity="1" />
+          <End Role="Exam_BookSale" Type="Self.Exam_BookSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exam_Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exam_BookSale">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище BookShopDataModel_NamespaceContainer">
-          <EntitySet Name="Exam_Books" EntityType="Self.Exam_Books" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Exam_Books].[id] AS [id], 
-    [Exam_Books].[Name] AS [Name], 
-    [Exam_Books].[Genre] AS [Genre], 
-    [Exam_Books].[Author] AS [Author], 
-    [Exam_Books].[Price] AS [Price], 
-    [Exam_Books].[CountInShop] AS [CountInShop], 
-    [Exam_Books].[CountInStore] AS [CountInStore], 
-    [Exam_Books].[Description] AS [Description], 
-    [Exam_Books].[Cover] AS [Cover]
-    FROM [dbo].[Exam_Books] AS [Exam_Books]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Exam_Books" EntityType="Self.Exam_Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exam_BookSale" EntityType="Self.Exam_BookSale" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Exam_BookSale_Exam_Books" Association="Self.FK_Exam_BookSale_Exam_Books">
+            <End Role="Exam_Books" EntitySet="Exam_Books" />
+            <End Role="Exam_BookSale" EntitySet="Exam_BookSale" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BookShopDataModel_Namespace" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -54,10 +65,38 @@
           <Property Name="CountInStore" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Exam_BookSale" Relationship="BookShopDataModel_Namespace.FK_Exam_BookSale_Exam_Books" FromRole="Exam_Books" ToRole="Exam_BookSale" />
         </EntityType>
         <EntityContainer Name="BookShopDataModel" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Exam_Books" EntityType="Self.Exam_Books" />
+          <EntitySet Name="Exam_BookSale" EntityType="BookShopDataModel_Namespace.Exam_BookSale" />
+          <AssociationSet Name="FK_Exam_BookSale_Exam_Books" Association="BookShopDataModel_Namespace.FK_Exam_BookSale_Exam_Books">
+            <End Role="Exam_Books" EntitySet="Exam_Books" />
+            <End Role="Exam_BookSale" EntitySet="Exam_BookSale" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Exam_BookSale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="SaleCode" Type="Int32" Nullable="false" />
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Exam_Books" Relationship="BookShopDataModel_Namespace.FK_Exam_BookSale_Exam_Books" FromRole="Exam_BookSale" ToRole="Exam_Books" />
+        </EntityType>
+        <Association Name="FK_Exam_BookSale_Exam_Books">
+          <End Type="BookShopDataModel_Namespace.Exam_Books" Role="Exam_Books" Multiplicity="1" />
+          <End Type="BookShopDataModel_Namespace.Exam_BookSale" Role="Exam_BookSale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exam_Books">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Exam_BookSale">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -76,6 +115,16 @@
                 <ScalarProperty Name="CountInStore" ColumnName="CountInStore" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Cover" ColumnName="Cover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exam_BookSale">
+            <EntityTypeMapping TypeName="BookShopDataModel_Namespace.Exam_BookSale">
+              <MappingFragment StoreEntitySet="Exam_BookSale">
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="SaleCode" ColumnName="SaleCode" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

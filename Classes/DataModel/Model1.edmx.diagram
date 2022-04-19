@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="24af6b1543334c5b9552d224ee7ba5a0" Name="Diagram1">
         <EntityTypeShape EntityType="BookShopDataModel_Namespace.Exam_Books" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopDataModel_Namespace.Exam_BookSale" Width="1.5" PointX="3" PointY="1.25" />
+        <AssociationConnector Association="BookShopDataModel_Namespace.FK_Exam_BookSale_Exam_Books" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

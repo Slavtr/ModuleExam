@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ModuleExam.Classes.DataModel;
 using ModuleExam.Classes.OverlapEntities;
 
 namespace ModuleExam.Classes
 {
-    class BookManagingClass
+    public class BookManagingClass
     {
         public List<BookClass> Books { get; set; } = new List<BookClass>();
         private List<BookClass> _cart = new List<BookClass>();

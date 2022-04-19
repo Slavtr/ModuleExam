@@ -21,7 +21,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1" Name="Корзина" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Количество выбранных книг: "/>
-                <TextBlock x:Name="tbBookCount" Text="0"/>
+                <TextBlock x:Name="tbBookCount" Text="{Binding Path=MainWindow.BookManagingClass.Cart.Count}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Стоимость покупки: "/>
@@ -33,37 +33,37 @@
                 <TextBlock x:Name="tbDiscountSize" Text="0%"/>
             </StackPanel>
         </StackPanel>
-        <ListBox Grid.Row="1" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <ListBox Grid.Row="1" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="lbMainListBox">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image MinWidth="400" MinHeight="400"/>
+                        <Image MinWidth="400" MinHeight="400" Source="{Binding Path=MainImage}"/>
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Название: "/>
-                                <TextBlock x:Name="tbBookName"/>
+                                <TextBlock x:Name="tbBookName" Text="{Binding Path=Book.Name}"/>
                                 <TextBlock Text="| Жанр: "/>
-                                <TextBlock x:Name="tbBookGenre"/>
+                                <TextBlock x:Name="tbBookGenre" Text="{Binding Path=Book.Genre}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Автор: "/>
-                                <TextBlock x:Name="tbAuthor"/>
+                                <TextBlock x:Name="tbAuthor" Text="{Binding Path=Book.Author}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Цена: "/>
-                                <TextBlock x:Name="tbPrice"/>
+                                <TextBlock x:Name="tbPrice" Text="{Binding Path=Book.Price}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Количество в магазине: "/>
-                                <TextBlock x:Name="tbShopCount"/>
+                                <TextBlock x:Name="tbShopCount" Text="{Binding Path=Book.CountInShop}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Количество На складе: "/>
-                                <TextBlock x:Name="tbStoreCount"/>
+                                <TextBlock x:Name="tbStoreCount" Text="{Binding Path=Book.CountInStore}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Описание: "/>
-                                <TextBlock x:Name="tbSDescription" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="tbSDescription" TextWrapping="Wrap" Text="{Binding Path=Book.Description}" MaxWidth="800"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

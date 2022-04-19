@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModuleExam.Classes.DataModel;
-using 
+using ModuleExam.Classes;
 
 namespace ModuleExam
 {
@@ -23,10 +23,11 @@ namespace ModuleExam
     public partial class MainWindow : Window
     {
         public static List<Page> Pages { get; set; } = new List<Page>();
-        public static 
+        public static BookManagingClass BookManagingClass { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            BookManagingClass = new BookManagingClass();
             Pages.Add(new Pages.ListPage());
             mwMainFrame.Content = Pages[0];
         }

@@ -14,6 +14,12 @@ namespace ModuleExam.Classes.DataModel
     
     public partial class Exam_Books
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Exam_Books()
+        {
+            this.Exam_BookSale = new HashSet<Exam_BookSale>();
+        }
+    
         public int id { get; set; }
         public string Name { get; set; }
         public string Genre { get; set; }
@@ -23,5 +29,8 @@ namespace ModuleExam.Classes.DataModel
         public Nullable<int> CountInStore { get; set; }
         public string Description { get; set; }
         public string Cover { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Exam_BookSale> Exam_BookSale { get; set; }
     }
 }

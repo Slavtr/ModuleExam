@@ -9,7 +9,7 @@ using ModuleExam.Classes.DataModel;
 
 namespace ModuleExam.Classes.OverlapEntities
 {
-    class BookClass
+    public class BookClass
     {
         public Exam_Books Book { get; set; }
 
@@ -22,7 +22,8 @@ namespace ModuleExam.Classes.OverlapEntities
                 {
                     _mainImage = new BitmapImage();
                     _mainImage.BeginInit();
-                    _mainImage.UriSource = new Uri(Book.Cover);
+                    string path = Environment.CurrentDirectory + "\\" + Book.Cover;
+                    _mainImage.UriSource = new Uri(path, UriKind.Absolute);
                     _mainImage.EndInit();
                 }
                 return _mainImage;
